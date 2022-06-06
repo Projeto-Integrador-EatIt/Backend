@@ -11,8 +11,9 @@ import javax.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
-@Setter
+
 @Getter
+@Setter
 @Entity
 @Table(name = "tb_categorias")
 public class Categoria {
@@ -22,12 +23,12 @@ public class Categoria {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@NotBlank(message = "O título é obrigatorio e não pode ser co espaços em branco)")
-	@Size(min = 3, max = 255, message = "título deve conter no min 5 caracteres e no máximo 255")
+	@NotBlank(message = "O tipo é obrigatorio e não pode ser com espaços em branco)")
+	@Size(min = 3, max = 255, message = "tipo deve conter no min 5 caracteres e no máximo 255")
 	private String tipo;
 	
-	@NotBlank(message = "O título é obrigatorio e não pode ser co espaços em branco)")
-	@Size(min = 3, max = 255, message = "título deve conter no min 5 caracteres e no máximo 255")
+	@NotBlank(message = "A descricao é obrigatorio e não pode ser com espaços em branco)")
+	@Size(min = 3, max = 255, message = "A descricao deve conter no min 5 caracteres e no máximo 255")
 	private String descricao;
 	
 	
