@@ -1,6 +1,5 @@
 package com.generation.eatit.model;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,7 +15,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "tb_produtos")
-public class Produtos {
+public class Produto {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
