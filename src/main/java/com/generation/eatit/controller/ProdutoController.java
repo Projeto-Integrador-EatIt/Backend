@@ -28,7 +28,7 @@ public class ProdutoController {
     public ResponseEntity<List<Produto>> getAll(){
         return ResponseEntity.ok(produtoRepository.findAll());
     }
-
+//Arrumar o caminho do ID.
     @GetMapping("/{id}")
     public ResponseEntity<Produto> findByID (@PathVariable Produto produto){
         return produtoRepository.findById(produto.getId())
@@ -58,7 +58,8 @@ public class ProdutoController {
     public ResponseEntity<List<Produto>> findValorBetween(@PathVariable BigDecimal valorMenor, @PathVariable BigDecimal valorMaior){
         return ResponseEntity.ok(produtoRepository.findAllByValorBetween(valorMenor,valorMaior));
     }
-
+// Arrumar no postMapping o not found.
+    //Ajustar o para não postar duas vezes o mesmo produto.
     @PostMapping
     public ResponseEntity<Produto> postProdutos(@Valid @RequestBody Produto produto){
         return ResponseEntity.status(HttpStatus.CREATED).body(produtoRepository.save(produto));
