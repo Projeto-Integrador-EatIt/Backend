@@ -1,12 +1,14 @@
 package com.generation.eatit.controller;
 
 import com.generation.eatit.model.Produto;
+import com.generation.eatit.repository.CategoriaRepository;
 import com.generation.eatit.repository.ProdutoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -18,6 +20,9 @@ public class ProdutoController {
 
     @Autowired
     ProdutoRepository produtoRepository;
+
+    @Autowired
+    CategoriaRepository categoriaRepository;
 
     @GetMapping
     public ResponseEntity<List<Produto>> getAll(){
@@ -55,12 +60,17 @@ public class ProdutoController {
     }
 
     @PostMapping
-    public ResponseEntity<Produto> postProdutos(@RequestBody Produto produto){
+    public ResponseEntity<Produto> postProdutos(@Valid @RequestBody Produto produto){
         return ResponseEntity.status(HttpStatus.CREATED).body(produtoRepository.save(produto));
     }
 
     @PutMapping
-    public ResponseEntity<Produto> putProdutos(@RequestBody Produto produto){
+    public ResponseEntity<Produto> putProdutos(@Valid @RequestBody Produto produto){
+        if(produto.getCategoria().getId()==null||
+        !categoriaRepository.existsById(produto.getCategoria().getId())){
+            return ResponseEntity.badRequest().build();
+        }
+
         return produtoRepository.findById(produto.getId())
                 .map(r-> ResponseEntity.ok(produtoRepository.save(produto)))
                 .orElse(ResponseEntity.notFound().build());
