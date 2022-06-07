@@ -37,6 +37,6 @@ public class Categoria {
 	
 	@OneToMany(mappedBy = "categoria", cascade =CascadeType.REMOVE)
 	@JsonIgnoreProperties("categoria")
-	private Produtos produto;
+	private Produto produto;
 
 }
