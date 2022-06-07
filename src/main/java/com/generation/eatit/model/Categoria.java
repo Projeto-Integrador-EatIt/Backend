@@ -11,9 +11,8 @@ import javax.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 
-
-@Getter
 @Setter
+@Getter
 @Entity
 @Table(name = "tb_categorias")
 public class Categoria {
