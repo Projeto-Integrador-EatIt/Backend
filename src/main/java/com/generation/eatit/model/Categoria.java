@@ -1,5 +1,7 @@
 package com.generation.eatit.model;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,9 +17,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
 
-
-@Setter
 @Getter
+@Setter
 @Entity
 @Table(name = "tb_categorias")
 public class Categoria {
@@ -37,6 +38,6 @@ public class Categoria {
 	
 	@OneToMany(mappedBy = "categoria", cascade =CascadeType.REMOVE)
 	@JsonIgnoreProperties("categoria")
-	private Produto produto;
 
+	private List <Produto> produto;
 }
