@@ -1,5 +1,7 @@
 package com.generation.eatit.model;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -36,6 +38,8 @@ public class Categoria {
 	
 	@OneToMany(mappedBy = "categoria", cascade =CascadeType.REMOVE)
 	@JsonIgnoreProperties("categoria")
-	private Produto produto;
+	private List <Produto> produto;
 
+
+	//Colocar List no relacionamento de produtos.
 }
