@@ -14,6 +14,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.math.BigDecimal;
+
 @Getter
 @Setter
 @Entity
@@ -28,7 +30,7 @@ public class Produto {
 	@Size(min = 5, max = 255, message = "O atributo nome deve conter no minimo 5 e no maximo 255 caracteres")
 	private String nome;
 	
-	private double valor;
+	private BigDecimal valor;
 	
 	@NotBlank
 	@Size(min = 10, max = 500, message = "O atributo descricao deve conter no minimo 10 e no maximo 500 caracteres")
