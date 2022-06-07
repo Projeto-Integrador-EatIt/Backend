@@ -27,11 +27,11 @@ public class Usuario {
 	private String nome;
 	
 	@NotNull
-	@Email
+	@Email(message = "Digite um e-mail")
 	private String usuario;
 	
 	@NotNull
-	@Size(min = 8)
+	@Size(min = 8, message = "Digite uma senha com no mínimo 8 caracteres")
 	private String senha;
 	
 	private String foto;
