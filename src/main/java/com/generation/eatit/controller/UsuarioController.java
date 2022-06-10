@@ -2,12 +2,16 @@ package com.generation.eatit.controller;
 
 
 import com.generation.eatit.model.Usuario;
+import com.generation.eatit.model.UsuarioLogin;
+import com.generation.eatit.repository.UsuarioRepository;
+import com.generation.eatit.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/usuarios")
@@ -39,7 +43,7 @@ public class UsuarioController {
 
 
     @PostMapping("/logar")
-    public ResponseEntity<Usuario> login(@RequestBody Optional<Usuario> usuarioLogin) {
+    public ResponseEntity<UsuarioLogin> login(@RequestBody Optional<UsuarioLogin> usuarioLogin) {
         return usuarioService.autenticarUsuario(usuarioLogin)
                 .map(resposta -> ResponseEntity.ok(resposta))
                 .orElse(ResponseEntity.status(HttpStatus.UNAUTHORIZED).build());

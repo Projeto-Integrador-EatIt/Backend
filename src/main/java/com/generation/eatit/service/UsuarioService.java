@@ -35,7 +35,7 @@ public class UsuarioService {
 
             Optional<Usuario> buscausuario = usuarioRepository.findByUsuario(usuario.getUsuario());
 
-            if (buscausuario.isPresent() && buscausuario.get().getId() != usuario.getId())
+            if ((buscausuario.isPresent()) && (buscausuario.get().getId() != usuario.getId()))
                 throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"usuario ja existe",null);
 
             usuario.setSenha(criptografarSenha(usuario.getSenha()));
