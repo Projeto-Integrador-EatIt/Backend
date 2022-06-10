@@ -5,6 +5,10 @@ import com.generation.eatit.model.UsuarioLogin;
 import com.generation.eatit.repository.UsuarioRepository;
 
 import java.nio.charset.Charset;
+<<<<<<< HEAD
+=======
+
+>>>>>>> acc6b50eaede61c06b9931b56d7d38b457513159
 import java.util.Optional;
 
 import org.apache.commons.codec.binary.Base64;
@@ -34,7 +38,7 @@ public class UsuarioService {
 
             Optional<Usuario> buscausuario = usuarioRepository.findByUsuario(usuario.getUsuario());
 
-            if (buscausuario.isPresent() && buscausuario.get().getId() != usuario.getId())
+            if ((buscausuario.isPresent()) && (buscausuario.get().getId() != usuario.getId()))
                 throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"usuario ja existe",null);
 
             usuario.setSenha(criptografarSenha(usuario.getSenha()));

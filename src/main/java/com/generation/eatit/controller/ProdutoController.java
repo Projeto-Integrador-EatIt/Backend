@@ -3,6 +3,7 @@ package com.generation.eatit.controller;
 import com.generation.eatit.model.Produto;
 import com.generation.eatit.repository.CategoriaRepository;
 import com.generation.eatit.repository.ProdutoRepository;
+import com.generation.eatit.service.ProdutoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +24,9 @@ public class ProdutoController {
 
     @Autowired
     CategoriaRepository categoriaRepository;
+
+    @Autowired
+    ProdutoService produtoService;
 
     @GetMapping
     public ResponseEntity<List<Produto>> getAll(){
@@ -66,8 +70,9 @@ public class ProdutoController {
     	        !categoriaRepository.existsById(produto.getCategoria().getId())){
     	            return ResponseEntity.badRequest().build();
     	        }
-
     	return ResponseEntity.status(HttpStatus.CREATED).body(produtoRepository.save(produto));
+
+        
     }
 
     @PutMapping
