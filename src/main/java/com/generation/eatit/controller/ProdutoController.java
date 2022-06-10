@@ -3,6 +3,7 @@ package com.generation.eatit.controller;
 import com.generation.eatit.model.Produto;
 import com.generation.eatit.repository.CategoriaRepository;
 import com.generation.eatit.repository.ProdutoRepository;
+import com.generation.eatit.service.ProdutoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,6 +24,9 @@ public class ProdutoController {
 
     @Autowired
     CategoriaRepository categoriaRepository;
+
+    @Autowired
+    ProdutoService produtoService;
 
     @GetMapping
     public ResponseEntity<List<Produto>> getAll(){
@@ -62,12 +66,15 @@ public class ProdutoController {
     //Ajustar para não postar duas vezes o mesmo produto.
     @PostMapping
     public ResponseEntity<Produto> postProdutos(@Valid @RequestBody Produto produto){
-    	if(produto.getCategoria().getId()==null||
+    	/*if(produto.getCategoria().getId()==null||
     	        !categoriaRepository.existsById(produto.getCategoria().getId())){
     	            return ResponseEntity.badRequest().build();
     	        }
+    	return ResponseEntity.status(HttpStatus.CREATED).body(produtoRepository.save(produto));*/
 
-    	return ResponseEntity.status(HttpStatus.CREATED).body(produtoRepository.save(produto));
+        return produtoService.prodValid(produto)
+                .map(r-> ResponseEntity.status(HttpStatus.CREATED).body(r))
+                .orElse(ResponseEntity.status(HttpStatus.BAD_REQUEST).build());
     }
 
     @PutMapping
