@@ -66,15 +66,13 @@ public class ProdutoController {
     //Ajustar para não postar duas vezes o mesmo produto.
     @PostMapping
     public ResponseEntity<Produto> postProdutos(@Valid @RequestBody Produto produto){
-    	/*if(produto.getCategoria().getId()==null||
+    	if(produto.getCategoria().getId()==null||
     	        !categoriaRepository.existsById(produto.getCategoria().getId())){
     	            return ResponseEntity.badRequest().build();
     	        }
-    	return ResponseEntity.status(HttpStatus.CREATED).body(produtoRepository.save(produto));*/
+    	return ResponseEntity.status(HttpStatus.CREATED).body(produtoRepository.save(produto));
 
-        return produtoService.prodValid(produto)
-                .map(r-> ResponseEntity.status(HttpStatus.CREATED).body(r))
-                .orElse(ResponseEntity.status(HttpStatus.BAD_REQUEST).build());
+        
     }
 
     @PutMapping
