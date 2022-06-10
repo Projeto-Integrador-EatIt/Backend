@@ -1,15 +1,19 @@
 package com.generation.eatit.service;
 
 import com.generation.eatit.model.Usuario;
+import com.generation.eatit.model.UsuarioLogin;
 import com.generation.eatit.repository.UsuarioRepository;
 
-import java.util.Base64;
+import java.nio.charset.Charset;
+
 import java.util.Optional;
 
-
-
+import org.apache.commons.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 @Service
 public class UsuarioService {
@@ -41,7 +45,7 @@ public class UsuarioService {
         return Optional.empty();
     }
 
-    public Optional<UsuarioLoginModel> autenticarUsuario(Optional<UsuarioLoginModel> usuarioLogin) {
+    public Optional<UsuarioLogin> autenticarUsuario(Optional<UsuarioLogin> usuarioLogin) {
         Optional<Usuario> usuario = usuarioRepository.findByUsuario(usuarioLogin.get().getUsuario());
         if (usuario.isPresent()) {
             if (compararSenhas(usuarioLogin.get().getSenha(), usuario.get().getSenha())) {
