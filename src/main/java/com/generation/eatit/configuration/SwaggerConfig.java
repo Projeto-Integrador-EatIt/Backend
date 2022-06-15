@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import io.swagger.v3.oas.models.ExternalDocumentation;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Contact;
+import io.swagger.v3.oas.models.info.Info;
 import io.swagger.v3.oas.models.info.License;
 import io.swagger.v3.oas.models.responses.ApiResponse;
 import io.swagger.v3.oas.models.responses.ApiResponses;
@@ -22,8 +23,8 @@ public class SwaggerConfig {
 					.description("Projeto Integrador EatIt! - Generation Brasil")
 					.version("v0.0.1")
 				.license(new License()
-					.name("EatIt")
-					.url("https://github.com/Projeto-Integrador-EatIt"))
+					.name("Generation Brasil")
+					.url("\"https://brazil.generation.org/"))
 				.contact(new Contact()
 					.name("Projeto Integrador EatIt!")
 					.url("https://github.com/Projeto-Integrador-EatIt")

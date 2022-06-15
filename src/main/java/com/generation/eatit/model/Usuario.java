@@ -9,9 +9,9 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
 import lombok.Setter;
-
 
 
 @Getter
@@ -28,8 +28,9 @@ public class Usuario {
 	@Size(min = 3, max = 100)
 	private String nome;
 	
-	@NotNull
-	@Email(message = "Digite um e-mail")
+	@Schema(example = "email@email.com.br")
+	@NotNull(message = "O atributo Usuário é Obrigatório!")
+	@Email(message = "O atributo Usuário deve ser um email válido!")
 	private String usuario;
 	
 	@NotNull
