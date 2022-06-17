@@ -2,6 +2,7 @@ package com.generation.eatit.service;
 
 import java.util.Optional;
 
+import com.generation.eatit.model.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -33,4 +34,24 @@ public class ProdutoService {
 
         return Optional.of(produtoRepository.save(produto));
     }
+
+    public Optional<Produto> attProduto (Produto produto) {
+
+        if(produtoRepository.findById(produto.getId()).isPresent()) {
+            Optional<Produto> buscaproduto = produtoRepository.findByNomeContainingIgnoreCase(produto.getNome());
+
+            if ((buscaproduto.isPresent()) && (buscaproduto.get().getId() != produto.getId()))
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "produto ja existe", null);
+
+            if (produto.getCategoria().getId() == null ||
+                    !categoriaRepository.existsById(produto.getCategoria().getId())) {
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Categoria nula ou inexistente", null);
+            }
+            return Optional.of(produtoRepository.save(produto));
+        }
+        return Optional.empty();
+    }
+
+
+
 }

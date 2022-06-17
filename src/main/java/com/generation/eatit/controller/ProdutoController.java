@@ -23,9 +23,6 @@ public class ProdutoController {
     ProdutoRepository produtoRepository;
 
     @Autowired
-    CategoriaRepository categoriaRepository;
-
-    @Autowired
     ProdutoService produtoService;
 
     @GetMapping
@@ -63,7 +60,6 @@ public class ProdutoController {
         return ResponseEntity.ok(produtoRepository.findAllByValorBetween(valorMenor,valorMaior));
     }
 
-    //Ajustar para não postar duas vezes o mesmo produto.
     @PostMapping
     public ResponseEntity<Produto> postProdutos(@Valid @RequestBody Produto produto){
         return produtoService.prodValid(produto)
@@ -73,12 +69,7 @@ public class ProdutoController {
 
     @PutMapping
     public ResponseEntity<Produto> putProdutos(@Valid @RequestBody Produto produto){
-        if(produto.getCategoria().getId()==null||
-        !categoriaRepository.existsById(produto.getCategoria().getId())){
-            return ResponseEntity.badRequest().build();
-        }
-
-        return produtoRepository.findById(produto.getId())
+        return produtoService.attProduto(produto)
                 .map(r-> ResponseEntity.ok(produtoRepository.save(produto)))
                 .orElse(ResponseEntity.notFound().build());
     }
