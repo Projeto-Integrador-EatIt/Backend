@@ -1,5 +1,11 @@
 package com.generation.eatit.model;
 
+
+import lombok.Getter;
+import lombok.Setter;
+
+@Setter
+@Getter
 public class UsuarioLogin {
 	
 	private Long Id;
@@ -14,52 +20,14 @@ public class UsuarioLogin {
 	
 	private String token;
 
-	public Long getId() {
-		return Id;
-	}
+	public UsuarioLogin() {}
 
-	public void setId(Long id) {
+	public UsuarioLogin(Long id, String nome, String usuario, String senha, String foto, String token) {
 		Id = id;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
 		this.nome = nome;
-	}
-
-	public String getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(String usuario) {
 		this.usuario = usuario;
-	}
-
-	public String getSenha() {
-		return senha;
-	}
-
-	public void setSenha(String senha) {
 		this.senha = senha;
-	}
-
-	public String getFoto() {
-		return foto;
-	}
-
-	public void setFoto(String foto) {
 		this.foto = foto;
-	}
-
-	public String getToken() {
-		return token;
-	}
-
-	public void setToken(String token) {
 		this.token = token;
 	}
-
 }

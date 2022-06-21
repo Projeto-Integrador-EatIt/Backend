@@ -40,6 +40,13 @@ public class Categoria {
 	@JsonIgnoreProperties("categoria")
 	private List <Produto> produto;
 
+	public Categoria() {}
 
-	//Colocar List no relacionamento de produtos.
+	public Categoria(Long id, String tipo, String descricao) {
+		this.id = id;
+		this.tipo = tipo;
+		this.descricao = descricao;
+	}
+
+//Colocar List no relacionamento de produtos.
 }
