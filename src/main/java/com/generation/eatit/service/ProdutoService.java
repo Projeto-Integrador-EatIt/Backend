@@ -3,6 +3,10 @@ package com.generation.eatit.service;
 import java.util.Optional;
 
 import com.generation.eatit.model.Usuario;
+<<<<<<< HEAD
+=======
+import net.bytebuddy.implementation.bytecode.Throw;
+>>>>>>> a4404768dbdf19b719ec4f983d6e9b284491ef09
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -35,6 +39,7 @@ public class ProdutoService {
         return Optional.of(produtoRepository.save(produto));
     }
 
+<<<<<<< HEAD
     public Optional<Produto> attProduto (Produto produto) {
 
         if(produtoRepository.findById(produto.getId()).isPresent()) {
@@ -55,3 +60,15 @@ public class ProdutoService {
 
 
 }
+=======
+    public Optional<Produto> prodatt(Produto produto) {
+
+        if(produto.getCategoria().getId()==null||
+                !categoriaRepository.existsById(produto.getCategoria().getId())){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"Categoria nula ou inexistente",null);
+        }
+
+        return Optional.of(produto);
+    }
+}
+>>>>>>> a4404768dbdf19b719ec4f983d6e9b284491ef09

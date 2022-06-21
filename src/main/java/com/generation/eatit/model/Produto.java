@@ -43,4 +43,14 @@ public class Produto {
 	@ManyToOne
 	@JsonIgnoreProperties("produto")
 	private Categoria categoria;
+	public Produto() {}
+	public Produto(Long id, String nome, BigDecimal valor, String descricao, double peso, String foto, Categoria categoria) {
+		this.id = id;
+		this.nome = nome;
+		this.valor = valor;
+		this.descricao = descricao;
+		this.peso = peso;
+		this.foto = foto;
+		this.categoria = categoria;
+	}
 }

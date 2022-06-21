@@ -68,9 +68,17 @@ public class ProdutoController {
     }
 
     @PutMapping
+<<<<<<< HEAD
     public ResponseEntity<Produto> putProdutos(@Valid @RequestBody Produto produto){
         return produtoService.attProduto(produto)
                 .map(r-> ResponseEntity.ok(produtoRepository.save(produto)))
+=======
+    public ResponseEntity<Produto> putProdutos(@Valid @RequestBody Produto produto) {
+
+        return produtoService.prodatt(produto)
+                .map(r->ResponseEntity.status(HttpStatus.OK)
+                        .body(produtoRepository.save(produto)))
+>>>>>>> a4404768dbdf19b719ec4f983d6e9b284491ef09
                 .orElse(ResponseEntity.notFound().build());
     }
 
