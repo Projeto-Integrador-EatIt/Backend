@@ -158,7 +158,7 @@ public class ProdutoControllerTests {
                 .withBasicAuth("root","root")
                 .exchange("/produtos", HttpMethod.PUT,corpoRequisição,Produto.class);
 
-        assertEquals(HttpStatus.NO_CONTENT,response.getStatusCode());
+        assertEquals(HttpStatus.OK,response.getStatusCode());
         assertEquals(corpoRequisição.getBody().getNome(),produtoRepository.findById(1L).get().getNome());
     }
 

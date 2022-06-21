@@ -82,6 +82,17 @@ public class ProdutoServiceTest {
         produtoService.prodValid(produto);
 
         Assertions.assertTrue(produtoRepository.findByNomeContainingIgnoreCase("Produtoteste2").isPresent());
+    }
+
+    @Test
+    @Order(5)
+    @DisplayName("lança exception ao tentar atualizar com categoria nula")
+    void attprod(){
+        var categoria = new Categoria(null,"categoriateste","categoriateste");
+        var produto= new Produto(0L,"Produtoteste", BigDecimal.valueOf(100),
+                "produto para teste",10,null,categoria);
+
+        Assertions.assertThrows(ResponseStatusException.class,()->produtoService.prodatt(produto));
 
     }
 }
