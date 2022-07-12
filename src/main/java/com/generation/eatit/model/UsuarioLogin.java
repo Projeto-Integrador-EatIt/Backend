@@ -24,12 +24,13 @@ public class UsuarioLogin {
 
 	public UsuarioLogin() {}
 
-	public UsuarioLogin(Long id, String nome, String usuario, String senha, String foto, String token) {
+	public UsuarioLogin(Long id, String nome, String usuario, String senha, String foto, String tipo,String token) {
 		Id = id;
 		this.nome = nome;
 		this.usuario = usuario;
 		this.senha = senha;
 		this.foto = foto;
 		this.token = token;
+		this.tipo = tipo;
 	}
 }
