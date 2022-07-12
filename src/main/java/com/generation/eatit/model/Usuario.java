@@ -38,6 +38,8 @@ public class Usuario {
 	private String senha;
 	
 	private String foto;
+	
+	private String tipo;
 
 	public Usuario() {}
 
