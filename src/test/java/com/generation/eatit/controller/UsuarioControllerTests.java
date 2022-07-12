@@ -121,7 +121,7 @@ public class UsuarioControllerTests {
     public void develogarusuario(){
         HttpEntity<UsuarioLogin> requisicao =
                 new HttpEntity<UsuarioLogin>(new UsuarioLogin(null,null,"ricardo_marques@email.com.br",
-                        "ricardo123",null,null));
+                        "ricardo123",null,null, null));
 
         ResponseEntity<String> response= testRestTemplate
                 .withBasicAuth(requisicao.getBody().getUsuario(),requisicao.getBody().getSenha())

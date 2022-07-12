@@ -78,13 +78,13 @@ public class UsuarioServiceTest {
     public void autenticar(){
         var usuariologin = Optional.of(new UsuarioLogin(null,
                 null,"nestor@gmail.com",
-                "123456789",null,null));
+                "123456789",null,null, null));
         var usuariologin2 = Optional.of(new UsuarioLogin(null,
                 null,"nestor@gmail.com",
-                "123456",null,null));
+                "123456",null,null,null));
         var usuariologin3 = Optional.of(new UsuarioLogin(null,
                 null,"nestora@gmail.com",
-                "123456789",null,null));
+                "123456789",null,null, null));
 
         var autenticar = usuarioService.autenticarUsuario(usuariologin);
         var autenticar1 = usuarioService.autenticarUsuario(usuariologin2);
