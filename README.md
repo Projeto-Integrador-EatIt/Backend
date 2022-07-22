@@ -1,7 +1,7 @@
 # Eatit
 >status: Development
 
-API-REST de um e-commerce, onde é possivel gerenciar os produtos atravez de protocolos HTTP. A aplicação está sendo criada com SpringBoot contendo as seguintes dependencias:
+API-REST de um e-commerce, onde é possivel gerenciar os produtos atravez de protocolos HTTP. A aplicação está sendo criada com SpringBoot e atualmente possui as seguintes dependencias:
 
 * JPA - Responsável pela persistencia e mapeamento Objeto Relacional em banco de dados;
 * Mysql - Responsável pela conexão com o banco de dados MYSQL;
